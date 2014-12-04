@@ -15,7 +15,7 @@
     <% @pins.each do |pin| %>
       <tr>
         <td><%= pin.name %></td>
-        <td><%= pin.image %></td>
+        <td><%= image_tag(pin.image_url, :width => 200) %></td>
         <!-- showing username associated with pin -->
         <td><%= pin.user.first_name %></td>
         <!-- showing name associated board name  -->
@@ -24,7 +24,7 @@
         <td><%= link_to 'Edit', edit_pin_path(pin) %></td>
         <td><%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
+    <%end%>
   </tbody>
 </table>
 
