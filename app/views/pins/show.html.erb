@@ -7,17 +7,20 @@
 
 <p>
   <strong>Image:</strong>
-  <%= @pin.image %>
+  <!-- allows us to see the images we upload -->
+  <%= image_tag(@pin.image_url, :width => 200 %>
+
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @pin.user_id %>
+  <%= @pin.user.first_name %>
 </p>
 
 <p>
   <strong>Board:</strong>
-  <%= @pin.board_id %>
+  <!-- To change the display from reference number to associated name -->
+  <%= @pin.board.name %>
 </p>
 
 <%= link_to 'Edit', edit_pin_path(@pin) %> |

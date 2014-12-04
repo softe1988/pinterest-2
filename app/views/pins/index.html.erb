@@ -16,8 +16,10 @@
       <tr>
         <td><%= pin.name %></td>
         <td><%= pin.image %></td>
-        <td><%= pin.user_id %></td>
-        <td><%= pin.board_id %></td>
+        <!-- showing username associated with pin -->
+        <td><%= pin.user.first_name %></td>
+        <!-- showing name associated board name  -->
+        <td><%= pin.board.name %></td>
         <td><%= link_to 'Show', pin %></td>
         <td><%= link_to 'Edit', edit_pin_path(pin) %></td>
         <td><%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
