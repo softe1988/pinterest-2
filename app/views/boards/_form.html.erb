@@ -21,8 +21,8 @@
   </div>
   <div class="field">
     <%= f.label :user_id %><br>
-    <!-- Changes asssociation display to name instead of integer -->
-    <%= f.collection_select :user_id, User.all,:id, :first_name %>
+    <!-- Changes asssociation display to name instead of integer. created full name method in model can update f.collect select to show :full_name instead of just first name -->
+    <%= f.collection_select :user_id, User.all,:id, :full_name %>
   </div>
   <div class="actions">
     <%= f.submit %>

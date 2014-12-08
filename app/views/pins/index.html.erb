@@ -14,12 +14,12 @@
   <tbody>
     <% @pins.each do |pin| %>
       <tr>
-        <td><%= pin.name %></td>
-        <td><%= image_tag(pin.image_url, :width => 200) %></td>
+        <td><%= pin.name rescue "N/A" %></td>
+        <td><%= image_tag(pin.image_url, :width => "100%") %></td>
         <!-- showing username associated with pin -->
-        <td><%= pin.user.first_name %></td>
+        <td><%= pin.user.full_name rescue "N/A"  %></td>
         <!-- showing name associated board name  -->
-        <td><%= pin.board.name %></td>
+        <td><%= pin.board.name rescue "N/A"  %></td>
         <td><%= link_to 'Show', pin %></td>
         <td><%= link_to 'Edit', edit_pin_path(pin) %></td>
         <td><%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -31,3 +31,7 @@
 <br>
 
 <%= link_to 'New Pin', new_pin_path %>
+<br>
+
+<!-- method: :delete is method to delete -->
+<%= link_to 'Delete All Pins', @pin, method: :delete, data: {confirm: "Are you sure?"} %>

@@ -5,11 +5,28 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+      # will display message above take based on number of users 
+      if @users.count > 5
+        @some_text = "Great we have #{@users.count} users!"
+      else
+        @some_text = "We need more users!"  
+      end  
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+  # all the instances of board related to a certain user
+  @boards = @user.boards  
+ 
+  # if you call <%= @some_text%> in user_show file it will print a greeting to the page
+    if @user.first_name = "Simone"
+      @some_text = "Hello Simone!"
+    
+    else
+      @some_text = "You're not Simone, but you're just as cute" 
+    
+    end
   end
 
   # GET /users/new
@@ -69,6 +86,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:first_name, :email)
+     # have to add to permit last_name so it will allow us to save to database
+      params.require(:user).permit(:first_name, :email, :last_name)
     end
 end

@@ -1,5 +1,14 @@
 class PinsController < ApplicationController
   before_action :set_pin, only: [:show, :edit, :update, :destroy]
+# to delete all pins on page across all users
+  def delete_all
+    Pin.delete_all
+    #says once you delet all this is the action it will create
+    respond_to do |format|
+      format.html {redirect_to pins_url}
+      format.json {head :no_content}
+    end
+  end  
 
   # GET /pins
   # GET /pins.json
