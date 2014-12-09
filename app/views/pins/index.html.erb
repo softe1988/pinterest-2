@@ -1,37 +1,33 @@
 <h1>Listing pins</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Image</th>
-      <th>User</th>
-      <th>Board</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div id= "wrapper">
+  <div id= "columns">
+  <% @pins.each do |pin| %>
+    <div class="js-masonry" data-masonry-options='{ "itemSelector": ".item", "columnWidth": 100px }'>
+        <div class= "item-background">
+          <div class= "pin-image">
+         <!-- added abilily to view image on index page. remove @ symbol from show page formula -->
+         <%= image_tag(pin.image_url, :width => "100%") if pin.image.present? rescue "N/A" %>
+       </div>
 
-  <tbody>
-    <% @pins.each do |pin| %>
-      <tr>
-        <td><%= pin.name rescue "N/A" %></td>
-        <td><%= image_tag(pin.image_url, :width => "100%") %></td>
-        <!-- showing username associated with pin -->
-        <td><%= pin.user.full_name rescue "N/A"  %></td>
-        <!-- showing name associated board name  -->
-        <td><%= pin.board.name rescue "N/A"  %></td>
-        <td><%= link_to 'Show', pin %></td>
-        <td><%= link_to 'Edit', edit_pin_path(pin) %></td>
-        <td><%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <%end%>
-  </tbody>
-</table>
+       <div class= "item-info">
+         <h5><%= pin.name %></h5>
+         <h5><%= pin.user.full_name rescue "N/A"  %></h5>
+         <h5><%= pin.board.name rescue "N/A"%></h5>
+       </div>  
+      </div>  
+        <div class= "item-links">
+         <%= link_to 'Show', pin %>
+         <%= link_to 'Edit', edit_pin_path(pin) %>
+         <%= link_to 'Delete All Pins', @pin, method: :delete, data: {confirm: "Are you sure?"} %>
+         <br>
+         <%= link_to 'New Pin', new_pin_path %>
+        </div>
+    </div>
+ </div>   
+    <% end %>
+</div>
 
-<br>
 
-<%= link_to 'New Pin', new_pin_path %>
-<br>
 
-<!-- method: :delete is method to delete -->
-<%= link_to 'Delete All Pins', @pin, method: :delete, data: {confirm: "Are you sure?"} %>
+

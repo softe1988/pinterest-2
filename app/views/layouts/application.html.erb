@@ -14,7 +14,7 @@
   	<!-- Set the viewport width to device width for mobile -->
   	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  	<title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+  	<title><%= content_for?(:title) ? yield(:title) : "Pinterest" %></title>
 
   	<%= stylesheet_link_tag    "application" %>
   	<%= javascript_include_tag "vendor/custom.modernizr" %>
@@ -23,7 +23,35 @@
 
   <body>
     <!-- links and routes for nav bar -->
-    <%= link_to 'Home', root_path %> | <%=link_to 'Users', users_path%>| <%=link_to 'Boards', boards_path %>|<%=link_to 'Pins', pins_path%>|  
+ <!--    <%= link_to 'Home', root_path %> | <%=link_to 'Users', users_path%>| <%=link_to 'Boards', boards_path %>|<%=link_to 'Pins', pins_path%>|  
+ -->
+    <!-- Nav Wrap -->
+<nav class="top-bar">
+    <ul class="title-area">
+    <!-- Title Area -->
+        <li class="name"></li>
+        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+ 
+    <!-- The Section wrap -->
+    <section class="top-bar-section">
+     
+        <!-- Left Nav Section -->
+        <ul class="left">
+            <li class="active"><%= link_to 'Home', root_path %> Home</a></li>
+            <li><%=link_to 'Users', users_path%>Users</a></li>
+            <li><%=link_to 'Boards', boards_path %>Boards</a></li>
+            <li><%=link_to 'Pins', pins_path%>Pins</a>
+            </li>
+        </ul>
+ 
+        <!-- Right Nav Section -->
+        <ul class="right"></ul>
+ 
+    </section>
+</nav>
+
     
     <%= yield %>
 

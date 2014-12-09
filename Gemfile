@@ -31,6 +31,9 @@ gem 'compass-rails'
 
 gem 'zurb-foundation'
 
+gem 'jquery-turbolinks'
+
+gem 'jquery-masonry-rails', '~> 3.1.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
