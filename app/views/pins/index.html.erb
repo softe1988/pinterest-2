@@ -1,33 +1,33 @@
-<h1>Listing pins</h1>
-
-<div id= "wrapper">
-  <div id= "columns">
-  <% @pins.each do |pin| %>
-    <div class="js-masonry" data-masonry-options='{ "itemSelector": ".item", "columnWidth": 100px }'>
-        <div class= "item-background">
-          <div class= "pin-image">
-         <!-- added abilily to view image on index page. remove @ symbol from show page formula -->
-         <%= image_tag(pin.image_url, :width => "100%") if pin.image.present? rescue "N/A" %>
+<center><h1>All The Pins</h1>
+<div class= "item-links">
+ <%= link_to 'New Pin', new_pin_path %>
+</div>
+</center> <div id="columns">
+   <% @pins.each do |pin| %>
+     <div class="item-background">
+       <div class="item-image">
+       <%= image_tag( pin.image, :width => 200) if pin.image.present? rescue "none" %>
        </div>
-
-       <div class= "item-info">
-         <h5><%= pin.name %></h5>
-         <h5><%= pin.user.full_name rescue "N/A"  %></h5>
-         <h5><%= pin.board.name rescue "N/A"%></h5>
-       </div>  
-      </div>  
-        <div class= "item-links">
+       <div class="item-info">
+         <h3><%= pin.name %></h3>
+         <h4>By: <%= link_to pin.user.first_name, user_path(pin.user.id) %></h4>
+         <h4>Pinned to board:
+           <%= if pin.board present?
+                 link_to pin.board.name, board_path(pin.board.id)  
+               end %></h4>
+       </div>
+       <div class= "item-links">
          <%= link_to 'Show', pin %>
          <%= link_to 'Edit', edit_pin_path(pin) %>
-         <%= link_to 'Delete All Pins', @pin, method: :delete, data: {confirm: "Are you sure?"} %>
-         <br>
-         <%= link_to 'New Pin', new_pin_path %>
-        </div>
-    </div>
- </div>   
-    <% end %>
+         <%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %>
+       </div>
+     </div>
+   <% end %>
 </div>
-
-
-
+<br>
+<center>
+<div class= "item-links">
+ <%= link_to 'New Pin', new_pin_path %>
+</div>
+</center> 
 
