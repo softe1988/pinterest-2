@@ -1,8 +1,10 @@
-<center><h1>All The Pins</h1>
+<center>
+  <h1>All The Pins</h1>
 <div class= "item-links">
  <%= link_to 'New Pin', new_pin_path %>
 </div>
 </center> <div id="columns">
+  <% will_paginate @pins %>
    <% @pins.each do |pin| %>
      <div class="item-background">
        <div class="item-image">

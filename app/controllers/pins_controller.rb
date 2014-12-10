@@ -13,7 +13,8 @@ class PinsController < ApplicationController
   # GET /pins
   # GET /pins.json
   def index
-    @pins = Pin.all
+    @pins = current_user.pins.paginate(page: params[:page], per_page: 3)
+
   end
 
   # GET /pins/1
