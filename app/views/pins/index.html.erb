@@ -4,7 +4,7 @@
  <%= link_to 'New Pin', new_pin_path %>
 </div>
 </center> <div id="columns">
-  <% will_paginate @pins %>
+  <%= will_paginate @pins %>
    <% @pins.each do |pin| %>
      <div class="item-background">
        <div class="item-image">
@@ -12,7 +12,7 @@
        </div>
        <div class="item-info">
          <h3><%= pin.name %></h3>
-         <h4>By: <%= link_to pin.user.first_name, user_path(pin.user.id) %></h4>
+         <h4>By: <%= link_to pin.user.full_name, user_path(pin.user.id) %></h4>
          <h4>Pinned to board:
            <%= if pin.board present?
                  link_to pin.board.name, board_path(pin.board.id)  
