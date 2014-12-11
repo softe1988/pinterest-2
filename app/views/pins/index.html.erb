@@ -1,5 +1,5 @@
 <center>
-  <h1>All The Pins</h1>
+  <h1>All My Pins</h1>
 <div class= "item-links">
  <%= link_to 'New Pin', new_pin_path %>
 </div>
@@ -7,16 +7,18 @@
   <%= will_paginate @pins %>
    <% @pins.each do |pin| %>
      <div class="item-background">
+       
        <div class="item-image">
        <%= image_tag( pin.image, :width => 200) if pin.image.present? rescue "none" %>
        </div>
        <div class="item-info">
-         <h3><%= pin.name %></h3>
-         <h4>By: <%= link_to pin.user.full_name, user_path(pin.user.id) %></h4>
+         <h4><%= pin.name %></h4>
+         <h4>By: <%= link_to pin.user.full_name%></h4>
          <h4>Pinned to board:
            <%= if pin.board present?
                  link_to pin.board.name, board_path(pin.board.id)  
-               end %></h4>
+               end %>
+          </h4>
        </div>
        <div class= "item-links">
          <%= link_to 'Show', pin %>
