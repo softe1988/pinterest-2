@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'activeadmin', github: 'activeadmin'
+
 gem 'devise'
 # allows us to upload files
 gem 'carrierwave'
