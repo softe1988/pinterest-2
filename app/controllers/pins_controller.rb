@@ -12,6 +12,7 @@ class PinsController < ApplicationController
 
   # GET /pins
   # GET /pins.json
+  # added paginate definition  
   def index
     @pins = current_user.pins.paginate(page: params[:page], per_page: 3)
 

@@ -4,7 +4,7 @@ class BoardsController < ApplicationController
   # GET /boards
   # GET /boards.json
   def index
-    @boards = Board.all
+    @boards = current_user.boards.paginate(page: params[:page], per_page: 3)
   end
 
   # GET /boards/1
@@ -19,6 +19,7 @@ class BoardsController < ApplicationController
 
   # GET /boards/1/edit
   def edit
+
   end
 
   # POST /boards

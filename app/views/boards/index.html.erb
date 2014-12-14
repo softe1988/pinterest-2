@@ -1,31 +1,31 @@
 <h1>Listing boards</h1>
 
-<div class= "board-header">
-    <div class = "medium-block-grid-4">
-      <h6>Name</h6></div>
-    <div class = "medium-block-grid-4">>  
-      <h6>About</h6></div>
-     <div class = "medium-block-grid-4">>
-      <h6>User</h6></div>
-      
-    </div>
-  </div>
-
-  <tbody>
+<div id="columns">
+     <%= will_paginate @boards %>
     <% @boards.each do |board| %>
-      <tr>
-        <td><%= board.name %></td>
-        <td><%= board.about %></td>
-         <!-- Changes asssociation display to name instead of integer -->
-        <td><%= board.user.full_name %></td>
-        <td><%= link_to 'Show', board %></td>
-        <td><%= link_to 'Edit', edit_board_path(board) %></td>
-        <td><%= link_to 'Destroy', board, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+
+<div id="columns">
+  <% @boards.each do |board| %>
+    <div class="board-background">
+    <div class="board-image">
+      <%= image_tag(board.image_url, :width =>"100%" ) if board.image.present? rescue "N/A" %>
+    </div>    
+
+ <div class="board-info">
+    <h3><%= board.name rescue "N/A" %></h3>
+    <h4><%= board.user.full_name rescue "N/A" %></h4>
+  </div>
+  <div class="board-links">
+    <%= link_to 'Show', board %>
+    <%= link_to 'Edit', edit_board_path(board) %>
+    <%= link_to 'Destroy', board, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
 </div>
-
+<% end %>
+</div>
 <br>
-
 <%= link_to 'New Board', new_board_path %>
+<br>
+<%= link_to 'Delete All Boards', Board, method: :delete, data: {confirm: 'Are you sure?'} %>
+</div>
+<% end%>
