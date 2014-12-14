@@ -4,7 +4,7 @@ class BoardsController < ApplicationController
   # GET /boards
   # GET /boards.json
   def index
-    @boards = current_user.boards.paginate(page: params[:page], per_page: 3)
+    @boards = current_user.boards.paginate(page: params[:page], per_page: 2)
   end
 
   # GET /boards/1
@@ -71,6 +71,6 @@ class BoardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def board_params
-      params.require(:board).permit(:name, :about, :user_id)
+      params.require(:board).permit(:name, :image, :about, :user_id)
     end
 end

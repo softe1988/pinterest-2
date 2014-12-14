@@ -1,5 +1,13 @@
 <p id="notice"><%= notice %></p>
 
+
+<!-- <p>
+  <strong>Image:</strong>
+  allows us to see the images we upload
+  <%= image_tag(@board.image_url, :width => 200) %>
+
+</p> -->
+
 <p>
   <strong>Name:</strong>
   <%= @board.name %>
@@ -16,28 +24,7 @@
   <%= @board.user.first_name %>
 </p>
 
-<p>
-  <strong>Associated Pins:</strong>
-  	<div id ="columns">
-  		<% board.pins.each do |pin| %>
-	  	
-	  	<div class = "item-background">
-		  	<div class = "pin-image">
-		  		<%= image_tag(pin.image_url, :width => "100%")%>
-		  	</div> 
-		  		<div class = "item-info">
-		  			<h3><%=pin.name%></h3>
-		  			<h4>Board Name:<%= pin.board.name rescue "N/A" %> </h4>
-		  			<h4>Pin Creator: <%= pin.user.full_name rescue "N/A" %></h4>
-			</div>	
-		  		<div class= "item-links">
-		  			<%= link_to 'Show', pin %> 
-		  			<%= link_to 'Edit', edit_board_path(@board) %> |
-					<%= link_to 'Destroy', pin, method: :delete, data: { confirm: "Are you sure?"} %>
-		  		</div>	
-  			</div>
 
-  		</div>	
   
 <%= link_to 'Edit', edit_board_path(@board) %> |
 <%= link_to 'Back', boards_path %>

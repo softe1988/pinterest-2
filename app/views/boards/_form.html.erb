@@ -11,6 +11,11 @@
     </div>
   <% end %>
 
+ <div class="field">
+    <%= f.label :image %><br>
+    <!-- changed from text to file_field -->
+    <%= f.file_field :image %>
+  </div>
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
