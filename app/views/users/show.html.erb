@@ -2,8 +2,8 @@
 	<%= @some_text %>
 <p>
 <br>	
-  <strong>First name:</strong>
-  <%= @user.first_name %>
+  <strong>Full name:</strong>
+  <%= @user.full_name rescue "N/A" %>
 </p>
 
 <p>	
@@ -13,7 +13,7 @@
 
 <p>
   <strong>Email:</strong>
-  <%= @user.email %>
+  <%= @user.email rescue "N/A" %>
 </p>
 
 <p> Showing all of <%= @user.first_name %>'s Boards: </p>
