@@ -37,6 +37,9 @@ gem 'jquery-turbolinks'
 gem 'jquery-masonry-rails', '~> 3.1.5'
 
 gem 'will_paginate'
+
+gem 'omniauth'
+gem 'omniauth-facebook', '1.4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # generated after custom migration 
   delete '/pins' => 'pins#delete_all'
 
+  # rails generate controller StaticPages home about 
   get 'static_pages/home'
 
   get 'static_pages/about'
